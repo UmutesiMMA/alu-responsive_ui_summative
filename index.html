@@ -8,11 +8,11 @@
   <body>
     <nav id="side-panel">
       <h1>Campus-life planner</h1>
-      <ul>
-        <li>Dashboard</li>
-        <li>Tasks</li>
-        <li>Events</li>
-        <li>Settings</li>
+      <ul id="nav-items">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="tasks_page.html">Tasks</a></li>
+        <li><a href="events_page.html">Events</a></li>
+        <li><a href="settings.html">Settings</a></li>
       </ul>
     </nav>
     <main id="dashboard-content">
@@ -21,11 +21,7 @@
         <label for="search"></label>
         <input type="text" name="search" title="search-box" id="search-box" />
 
-        <select
-          name="sortOptions"
-          id="sort-dropdown"
-          title="sort-options"
-        >
+        <select name="sortOptions" id="sort-dropdown" title="sort-options">
           <option value="">-</option>
           <option value="title">Title</option>
           <option value="status">Status</option>
@@ -44,6 +40,7 @@
               name="entryTitle"
               title="entryTitle"
               id="entryTitle"
+              required
             />
             <!-- //tag -->
             <select name="tagOptions" id="tags-dropdown" title="tag-options">
@@ -53,12 +50,36 @@
             </select>
             <section id="due-time-section">
               <label for="dueDate">Due date</label>
-              <input type="date" name="dueDate" id="due-date" title="dueDate" />
+              <input
+                type="date"
+                name="dueDate"
+                id="due-date"
+                title="dueDate"
+                required
+              />
               <label for="dueDate">Due time</label>
-              <input type="time" name="dueTime" id="due-time" title="dueTime" />
+              <input
+                type="time"
+                name="dueTime"
+                id="due-time"
+                title="dueTime"
+                required
+              />
             </section>
+            <!-- //status -->
+            <label for="status-dropdown">Status</label>
+            <select
+              name="statusOptions"
+              id="status-dropdown"
+              title="status-options"
+            >
+              <option value="not-started">Not started</option>
+              <option value="in-progress">In progress</option>
+              <option value="done">Done</option>
+              <option value="overdue">Overdue</option>
+            </select>
             <section id="action-buttons">
-              <button type="reset" id="cancel-entry-creation">Cancel</button>
+              <button type="button" id="cancel-entry-creation">Cancel</button>
               <button type="button" id="save-entry">Save</button>
             </section>
           </form>

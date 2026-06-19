@@ -60,27 +60,72 @@ function updateEntry(id, changes) {
   saveEntries(entries);
 }
 
-cancelBtn.addEventListener("click", () => {
-  dialog.closest();
+const titleInput = document.getElementById("entryTitle");
+const dueDateInput = document.getElementById("due-date");
+const dueTimeInput = document.getElementById("due-time");
+
+titleInput.addEventListener("input", () => {
+  titleInput.setCustomValidity(
+    titleInput.value.trim() === "" ? "Title can't be empty" : "",
+  );
+  //TODO-check for potential tags
 });
+
+dueDateInput.addEventListener("change", () => {
+  const date = dueDateInput.value;
+  const today = new Date().toISOString().split("T")[0];
+  dueDateInput.setCustomValidity(
+    date && date < today ? "Due date can't be in the past" : "",
+  );
+  // re-check time whenever date changes
+  dueTimeInput.dispatchEvent(new Event("change"));
+});
+
+dueTimeInput.addEventListener("change", () => {
+  const date = dueDateInput.value;
+  const time = dueTimeInput.value;
+  const today = new Date().toISOString().split("T")[0];
+
+  if (date && time && date === today) {
+    const now = new Date().toTimeString().slice(0, 5); // "HH:MM"
+    dueTimeInput.setCustomValidity(
+      time < now ? "Due time can't be in the past" : "",
+    );
+  } else {
+    dueTimeInput.setCustomValidity("");
+  }
+});
+
+cancelBtn.addEventListener("click", () => {
+  delete dialog.dataset.editingId;
+  dialog.querySelector("h2").textContent = "Create task/event";
+  dialog.querySelector("form").reset();
+  dialog.close();
+});
+
 saveBtn.addEventListener("click", (e) => {
-  let entryTitle = document.getElementById("entryTitle").value;
-  let entryTag = document.getElementById("tags-dropdown").value;
-  let dueDate = document.getElementById("due-date").value;
-  let dueTime = document.getElementById("due-time").value;
-
   e.preventDefault();
+  const form = dialog.querySelector("form");
+  if (!form.reportValidity()) return;
 
-  let entry = {
-    title: entryTitle,
-    tag: entryTag,
-    dueDate: dueDate,
-    dueTime: dueTime,
+  const entryData = {
+    title: titleInput.value,
+    tag: document.getElementById("tags-dropdown").value,
+    status: document.getElementById("status-dropdown").value,
+    dueDate: dueDateInput.value,
+    dueTime: dueTimeInput.value,
   };
-  console.log(entry);
-  addEntry(entry);
+
+  if (dialog.dataset.editingId) {
+    updateEntry(dialog.dataset.editingId, entryData);
+    delete dialog.dataset.editingId;
+    dialog.querySelector("h2").textContent = "Create task/event";
+  } else {
+    addEntry(entryData);
+  }
 
   dialog.close();
+  form.reset();
   displayEntries();
 });
 
@@ -113,9 +158,28 @@ function displayEntries(entries = loadEntries()) {
       <span class="entry-due">${formatDue(entry.dueDate, entry.dueTime)}</span>
       <span class="entry-status status-${entry.status}">${entry.status.replace(/-/g, " ")}</span>
     `;
+
+    li.querySelector(".edit-btn").addEventListener("click", () => openEditDialog(entry));
+    li.querySelector(".delete-btn").addEventListener("click", () => {
+      deleteEntry(entry.id);
+      displayEntries();
+    });
+
     overviewList.appendChild(li);
   });
 }
+
+function openEditDialog(entry) {
+  titleInput.value = entry.title;
+  document.getElementById("tags-dropdown").value = entry.tag;
+  document.getElementById("status-dropdown").value = entry.status;
+  dueDateInput.value = entry.dueDate;
+  dueTimeInput.value = entry.dueTime;
+  dialog.dataset.editingId = entry.id;
+  dialog.querySelector("h2").textContent = "Edit task/event";
+  dialog.showModal();
+}
+
 
 seedIfEmpty().then(displayEntries);
 
