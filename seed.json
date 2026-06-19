@@ -1,0 +1,29 @@
+[
+  {
+    "id": "2542743892672804",
+    "title": "Sample task",
+    "tag": "Task",
+    "status": "not-started",
+    "dueDate": "2026-06-20",
+    "dueTime": "18:07",
+    "createdAt": "1781785285905"
+  },
+  {
+    "id": "2542743892672834",
+    "title": "Sample completed task",
+    "tag": "Task",
+    "status": "done",
+    "dueDate": "2026-06-20",
+    "dueTime": "18:07",
+    "createdAt": "1781785285905"
+  },
+  {
+    "id": "2542743892672854",
+    "title": "Sample active Event",
+    "tag": "Task",
+    "status": "in-progress",
+    "dueDate": "2026-06-25",
+    "dueTime": "18:07",
+    "createdAt": "1781785285954"
+  }
+]
