@@ -3,8 +3,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+
   </head>
   <body>
-    <p>Settings page</p>
+    <nav id="side-panel">
+      <h1>Campus-life planner</h1>
+      <ul id="nav-items">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="tasks_page.html">Tasks</a></li>
+        <li><a href="events_page.html">Events</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </nav>
+    <main>
+      <p>Settings page</p>
+    </main>
+    <script>
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll("#nav-items a").forEach((link) => {
+        if (link.getAttribute("href") === currentPage) link.classList.add("active");
+      });
+    </script>
   </body>
 </html>

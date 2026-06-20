@@ -1,10 +1,84 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Events</title>
-</head>
-<body>
-    <p>This is the page for events</p>
-</body>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body>
+    <nav id="side-panel">
+      <h1>Campus-life planner</h1>
+      <ul id="nav-items">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="tasks_page.html">Tasks</a></li>
+        <li><a href="events_page.html">Events</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </nav>
+    <main id="events-content">
+      <section>
+        <label for="search"></label>
+        <input type="text" name="search" title="search-box" id="search-box" />
+        <select name="sortOptions" id="sort-dropdown" title="sort-options">
+          <option value="">-</option>
+          <option value="title">Title</option>
+          <option value="status">Status</option>
+          <option value="due-date-sort">Due Date</option>
+          <option value="due-time-sort">Due Time</option>
+        </select>
+        <button type="button" id="openDialog">Add event</button>
+
+        <dialog id="add-entry-dialog">
+          <h2>Create event</h2>
+          <form action="">
+            <label for="entryTitle">Title</label>
+            <input
+              type="text"
+              name="entryTitle"
+              id="entryTitle"
+              title="entryTitle"
+              required
+            />
+            <section id="due-time-section">
+              <label for="dueDate">Due date</label>
+              <input
+                type="date"
+                name="dueDate"
+                id="due-date"
+                title="dueDate"
+                required
+              />
+              <label for="dueTime">Due time</label>
+              <input
+                type="time"
+                name="dueTime"
+                id="due-time"
+                title="dueTime"
+                required
+              />
+            </section>
+            <label for="status-dropdown">Status</label>
+            <select
+              name="statusOptions"
+              id="status-dropdown"
+              title="status-options"
+            >
+              <option value="not-started">Not started</option>
+              <option value="in-progress">In progress</option>
+              <option value="done">Done</option>
+              <option value="overdue">Overdue</option>
+            </select>
+            <section id="action-buttons">
+              <button type="button" id="cancel-entry-creation">Cancel</button>
+              <button type="button" id="save-entry">Save</button>
+            </section>
+          </form>
+        </dialog>
+      </section>
+      <section id="overview">
+        <ul id="overview-list"></ul>
+      </section>
+    </main>
+    <script src="./scripts/script_events.js"></script>
+  </body>
 </html>

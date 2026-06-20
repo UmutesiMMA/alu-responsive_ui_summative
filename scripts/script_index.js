@@ -50,7 +50,7 @@ function addEntry(entry) {
 }
 
 function deleteEntry(id) {
-  const entries = loadEntries().sort((entry) => entry.id != id);
+  const entries = loadEntries().filter((entry) => entry.id != id);
   saveEntries(entries);
 }
 function updateEntry(id, changes) {
@@ -146,6 +146,11 @@ function displayEntries(entries = loadEntries()) {
 
   overviewList.innerHTML = "";
 
+  if (entries.length === 0) {
+    overviewList.innerHTML = `<li class="empty-state">No items created yet</li>`;
+    return;
+  }
+
   entries.forEach((entry) => {
     const li = document.createElement("li");
     li.classList.add("entry-card", `status-${entry.status}`);
@@ -157,9 +162,15 @@ function displayEntries(entries = loadEntries()) {
       <p class="entry-title">${entry.title}</p>
       <span class="entry-due">${formatDue(entry.dueDate, entry.dueTime)}</span>
       <span class="entry-status status-${entry.status}">${entry.status.replace(/-/g, " ")}</span>
+      <div class="card-actions">
+        <button class="edit-btn" type="button">Edit</button>
+        <button class="delete-btn" type="button">Delete</button>
+      </div>
     `;
 
-    li.querySelector(".edit-btn").addEventListener("click", () => openEditDialog(entry));
+    li.querySelector(".edit-btn").addEventListener("click", () =>
+      openEditDialog(entry),
+    );
     li.querySelector(".delete-btn").addEventListener("click", () => {
       deleteEntry(entry.id);
       displayEntries();
@@ -180,6 +191,11 @@ function openEditDialog(entry) {
   dialog.showModal();
 }
 
+// highlight active nav item
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
+document.querySelectorAll("#nav-items a").forEach((link) => {
+  if (link.getAttribute("href") === currentPage) link.classList.add("active");
+});
 
 seedIfEmpty().then(displayEntries);
 

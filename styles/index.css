@@ -1,3 +1,126 @@
+/* main page */
+body {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 0 20;
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 15%;
+  background-color: #f3f4f6;
+  border-radius: 25px;
+  padding: 0 20 0 20;
+}
+nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+#nav-items a.active {
+  font-weight: 700;
+  color: #619ac9;
+  border-left: 3px solid #619ac9;
+  padding-left: 6px;
+}
+
+main {
+  background-color: f3f4f6;
+  width: 100%;
+  padding: 20px 40px 0px 40px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 20px;
+}
+#toolbar {
+  display: flex;
+  gap: 10px;
+  justify-content: end;
+}
+
+#search-box,
+#sort-dropdown {
+  width: 25%;
+  height: 35px;
+  padding: 0px 5px 0px 5px;
+}
+button {
+  padding: 5px 20px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+}
+#openDialog {
+  background-color: #619ac9;
+}
+
+/* form */
+#add-entry-dialog {
+  padding: 20px;
+}
+.empty-state {
+  list-style: none;
+  text-align: center;
+  color: #999;
+  padding: 60px 0;
+  width: 100%;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-self: flex-end;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12;
+}
+dialog {
+  border: none;
+  width: 25%;
+}
+
+label {
+  padding-bottom: 8px;
+}
+
+form input,
+select {
+  width: 100%;
+  margin-bottom: 12px;
+  height: 30px;
+}
+form button {
+}
+
+#due-details-section {
+  display: flex;
+  gap: 10px;
+}
+#due-time-section,
+#due-date-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#overview-list {
+  padding: 0;
+  margin: 0;
+}
 /* Entry cards */
 .entry-card {
   display: flex;
@@ -54,21 +177,6 @@
   border-width: 1.5px;
   border-style: solid;
   border-radius: 999px;
-
   padding: 2px 8px;
   align-self: flex-start;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12;
-}
-
-form label {
-  margin-bottom: 8;
-}
-form input {
-  width: 100%;
-  margin-bottom: 12;
 }
