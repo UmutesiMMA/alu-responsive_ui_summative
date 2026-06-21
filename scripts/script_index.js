@@ -141,10 +141,18 @@ function formatDue(dueDate, dueTime) {
   });
 }
 
+function updateCounts() {
+  const all = loadEntries();
+  document.getElementById("count-all").textContent = `All: ${all.length}`;
+  document.getElementById("count-tasks").textContent = `Tasks: ${all.filter((e) => e.tag.toLowerCase() === "task").length}`;
+  document.getElementById("count-events").textContent = `Events: ${all.filter((e) => e.tag.toLowerCase() === "event").length}`;
+}
+
 function displayEntries(entries = loadEntries()) {
   const overviewList = document.getElementById("overview-list");
 
   overviewList.innerHTML = "";
+  updateCounts();
 
   if (entries.length === 0) {
     overviewList.innerHTML = `<li class="empty-state">No items created yet</li>`;
