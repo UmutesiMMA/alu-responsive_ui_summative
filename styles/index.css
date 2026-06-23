@@ -3,20 +3,22 @@ body {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding: 0 20;
+  padding: 0 20px;
 }
 nav {
   display: flex;
   flex-direction: column;
+  align-content: center;
   gap: 3rem;
   width: 15%;
   background-color: #f3f4f6;
   border-radius: 25px;
-  padding: 0 20 0 20;
+  padding: 0px 20px 0px 20px;
 }
 nav ul {
   display: flex;
   flex-direction: column;
+  align-content: center;
   gap: 45px;
   list-style-type: none;
 }
@@ -41,6 +43,8 @@ main {
   flex-direction: column;
   justify-content: start;
   gap: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 #toolbar {
   display: flex;
@@ -119,9 +123,6 @@ select {
   margin-bottom: 12px;
   height: 30px;
 }
-form button {
-}
-
 #due-details-section {
   display: flex;
   gap: 10px;
@@ -136,6 +137,8 @@ form button {
 #overview-list {
   padding: 0;
   margin: 0;
+  overflow: auto;
+  max-height: 75vh;
 }
 /* Entry cards */
 .entry-card {
@@ -195,4 +198,72 @@ form button {
   border-radius: 999px;
   padding: 2px 8px;
   align-self: flex-start;
+}
+
+.main-title {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-label {
+    display: none;
+  }
+  nav h1 {
+    display: none;
+  }
+  .main-title {
+    display: block;
+  }
+  main {
+    min-height: 100vh;
+    padding-bottom: 8vh;
+    height: calc(100vh-20vh);
+    box-sizing: border-box;
+  }
+  nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    z-index: 10;
+    border-radius: 0;
+    justify-content: space-around;
+    padding: 0 10px;
+  }
+  nav ul {
+    flex-direction: row;
+    width: 100%;
+    gap: 0;
+    padding: 0;
+    justify-content: space-around;
+  }
+  #nav-items a.active {
+    font-weight: 700;
+    color: #619ac9;
+    padding-left: 0px;
+    border-left: 0px;
+    border-bottom: 3px solid #619ac9;
+    padding-bottom: 6px;
+  }
+
+  #toolbar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  dialog {
+    width: 60%;
+  }
+  #due-details-section {
+    display: flex;
+    flex-direction: column;
+  }
 }

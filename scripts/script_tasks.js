@@ -79,11 +79,19 @@ function openEditDialog(entry) {
 
 document.getElementById("openDialog").addEventListener("click", () => dialog.showModal());
 
-document.getElementById("cancel-entry-creation").addEventListener("click", () => {
+function resetDialog() {
   delete dialog.dataset.editingId;
   dialog.querySelector("h2").textContent = "Create task";
   dialog.querySelector("form").reset();
+}
+
+document.getElementById("cancel-entry-creation").addEventListener("click", () => {
+  resetDialog();
   dialog.close();
+});
+
+dialog.addEventListener("cancel", () => {
+  resetDialog();
 });
 
 titleInput.addEventListener("input", () => {

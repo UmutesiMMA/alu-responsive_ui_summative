@@ -96,11 +96,19 @@ dueTimeInput.addEventListener("change", () => {
   }
 });
 
-cancelBtn.addEventListener("click", () => {
+function resetDialog() {
   delete dialog.dataset.editingId;
   dialog.querySelector("h2").textContent = "Create task/event";
   dialog.querySelector("form").reset();
+}
+
+cancelBtn.addEventListener("click", () => {
+  resetDialog();
   dialog.close();
+});
+
+dialog.addEventListener("cancel", () => {
+  resetDialog();
 });
 
 saveBtn.addEventListener("click", (e) => {

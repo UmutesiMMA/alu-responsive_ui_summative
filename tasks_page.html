@@ -4,20 +4,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tasks</title>
     <link rel="stylesheet" href="./styles/index.css" />
+     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
   </head>
   <body>
     <nav id="side-panel">
       <h1>Campus-life planner</h1>
       <ul id="nav-items">
-        <li><a href="index.html">Dashboard</a></li>
-        <li><a href="tasks_page.html">Tasks</a></li>
-        <li><a href="events_page.html">Events</a></li>
-        <li><a href="settings.html">Settings</a></li>
+        <li>
+          <a href="index.html"><i class="fa fa-tachometer"></i> <span class="nav-label">Dashboard</span></a>
+        </li>
+        <li>
+          <a href="tasks_page.html"><i class="fa fa-tasks"></i> <span class="nav-label">Tasks</span></a>
+        </li>
+        <li>
+          <a href="events_page.html"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
+        </li>
+        <li>
+          <a href="settings.html"><i class="fa fa-cog"></i> <span class="nav-label">Settings</span></a>
+        </li>
       </ul>
     </nav>
     <main id="tasks-content">
+      <h1 class="main-title">Campus-life planner</h1>
       <section id="toolbar">
-        <label for="search"></label>
+        <label for="search-box"></label>
         <input
           type="text"
           name="search"

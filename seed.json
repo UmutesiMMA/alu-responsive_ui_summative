@@ -25,5 +25,95 @@
     "dueDate": "2026-06-25",
     "dueTime": "18:07",
     "createdAt": "1781785285954"
+  },
+  {
+    "id": "2542743892672901",
+    "title": "Campus orientation",
+    "tag": "event",
+    "status": "not-started",
+    "dueDate": "2026-07-01",
+    "dueTime": "09:00",
+    "createdAt": "1750636800000"
+  },
+  {
+    "id": "2542743892672902",
+    "title": "Team project kickoff",
+    "tag": "event",
+    "status": "in-progress",
+    "dueDate": "2026-06-23",
+    "dueTime": "14:00",
+    "createdAt": "1750636800001"
+  },
+  {
+    "id": "2542743892672903",
+    "title": "End of semester review",
+    "tag": "event",
+    "status": "done",
+    "dueDate": "2026-06-10",
+    "dueTime": "11:00",
+    "createdAt": "1750636800002"
+  },
+  {
+    "id": "2542743892672904",
+    "title": "Library book return",
+    "tag": "event",
+    "status": "overdue",
+    "dueDate": "2026-06-01",
+    "dueTime": "17:00",
+    "createdAt": "1750636800003"
+  },
+  {
+    "id": "2542743892672905",
+    "title": "Submit lab report",
+    "tag": "task",
+    "status": "overdue",
+    "dueDate": "2026-06-05",
+    "dueTime": "23:59",
+    "createdAt": "1750636800004"
+  },
+  {
+    "id": "2542743892672906",
+    "title": "Prepare slides for presentation",
+    "tag": "task",
+    "status": "done",
+    "dueDate": "2026-12-31",
+    "dueTime": "08:00",
+    "createdAt": "1750636800005"
+  },
+  {
+    "id": "2542743892672907",
+    "title": "Task with no due time",
+    "tag": "task",
+    "status": "not-started",
+    "dueDate": "2026-07-10",
+    "dueTime": "",
+    "createdAt": "1750636800006"
+  },
+  {
+    "id": "2542743892672908",
+    "title": "Event with no date or time",
+    "tag": "event",
+    "status": "in-progress",
+    "dueDate": "",
+    "dueTime": "",
+    "createdAt": "1750636800007"
+  },
+  {
+    "id": "2542743892672909",
+    "title": "Read chapter 5 & 6 of <Intro to Algorithms> — \"must finish\"",
+    "tag": "task",
+    "status": "not-started",
+    "dueDate": "2026-06-30",
+    "dueTime": "20:00",
+    "createdAt": "1750636800008"
+  },
+  {
+    "id": "2542743892672910",
+    "title": "This is a very long task title that tests how the UI handles text overflow and wrapping behaviour inside entry cards on all screen sizes",
+    "tag": "task",
+    "status": "in-progress",
+    "dueDate": "2026-06-28",
+    "dueTime": "12:00",
+    "createdAt": "1750636800009"
   }
 ]
